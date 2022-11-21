@@ -1,14 +1,18 @@
 #!/bin/bash
 
-pushd app
+if [ ${CODESPACES} = \"true\" ]; then
+  REPO=$(echo $GITHUB_REPOSITORY | cut -d\"/\" -f2)
 
-if [ ! -d "vendor" ]; then
-  composer install
+  pushd /workspaces/$REPO/app
+
+  if [ ! -d "vendor" ]; then
+    composer install
+  fi
+
+  if [ ! -f ".env" ]; then
+    cp .env.example .env
+  fi
+
+  popd
+
 fi
-
-if [ ! -f ".env" ]; then
-  cp .env.example .env
-fi
-
-popd
-
