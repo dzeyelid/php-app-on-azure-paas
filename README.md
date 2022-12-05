@@ -16,8 +16,18 @@ Microsoft Azure の PaaS を用いて PHPアプリケーションをホストす
 ## 作業ログ
 
 まずは Laravel の開発環境をインストールする
+
 ```bash
 composer create-project laravel/laravel app
+composer install
+cp .env.example .env
+php artisan key:generate
 ```
 
-Laravel Sail を使ってみる
+Laravel Sail を起動する
+
+```bash
+composer require laravel/sail --dev
+php artisan sail:install
+./vendor/bin/sail up
+```

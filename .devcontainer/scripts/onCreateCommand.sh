@@ -1,9 +1,12 @@
 #!/bin/bash
 
-if [ ${CODESPACES} = \"true\" ]; then
-  REPO=$(echo $GITHUB_REPOSITORY | cut -d\"/\" -f2)
+sudo sed -i -e 's/\(^\(xdebug.start_with_reques\).*=.*yes\)/; \1\n\2 = no/g' /usr/local/etc/php/conf.d/xdebug.ini
 
-  pushd /workspaces/$REPO/app
+if [ ${CODESPACES} = "true" ]; then
+  REPO=$(echo $GITHUB_REPOSITORY | cut -d"/" -f2)
+  APP_DIR="/workspaces/$REPO/app"
+
+  pushd $APP_DIR
 
   if [ ! -d "vendor" ]; then
     composer install
