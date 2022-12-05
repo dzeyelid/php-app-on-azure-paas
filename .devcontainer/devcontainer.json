@@ -1,0 +1,51 @@
+{
+	"name": "PHP",
+	"image": "mcr.microsoft.com/devcontainers/php:8.1-bullseye",
+	"features": {
+		"ghcr.io/devcontainers/features/azure-cli:1": {},
+		"ghcr.io/devcontainers/features/common-utils:1": {
+			"installZsh": "false",
+			"upgradePackages": "true",
+			"uid": "1000",
+			"gid": "1000",
+			"installOhMyZsh": "false",
+			"nonFreePackages": "true"
+		},
+		"ghcr.io/devcontainers/features/docker-in-docker:1": {
+			"version": "latest",
+			"enableNonRootDocker": "true",
+			"moby": "true"
+		},
+		"ghcr.io/devcontainers/features/node:1": {
+			"version": "lts"
+		}
+	},
+
+	// Configure tool-specific properties.
+	"customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+			// Set *default* container specific settings.json values on container create.
+			"settings": { 
+				"php.validate.executablePath": "/usr/local/bin/php"
+			},
+			
+			// Add the IDs of extensions you want installed when the container is created.
+			"extensions": [
+				"xdebug.php-debug",
+				"bmewburn.vscode-intelephense-client",
+				"mrmlnc.vscode-apache"
+			]
+		}
+	},
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	"forwardPorts": [8080],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "sudo chmod a+x \"$(pwd)\" && sudo rm -rf /var/www/html && sudo ln -s \"$(pwd)\" /var/www/html"
+	"onCreateCommand": "if [ ${CODESPACES} = \"true\" ]; then REPO=$(echo $GITHUB_REPOSITORY | cut -d\"/\" -f2); bash /workspaces/${REPO}/.devcontainer/scripts/onCreateCommand.sh; fi"
+
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+}
