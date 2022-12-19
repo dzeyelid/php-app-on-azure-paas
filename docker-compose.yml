@@ -1,0 +1,24 @@
+version: '3'
+services:
+  web-nginx:
+    build:
+      context: .
+      dockerfile: ./docker/web-nginx/Dockerfile
+    image: web-nginx
+    networks:
+      - backend
+    ports:
+      - "8000:80"
+
+  php-fpm:
+    build:
+      context: .
+      dockerfile: ./docker/php-fpm/Dockerfile
+    image: php-fpm
+    networks:
+      - backend
+    ports:
+      - "9000:9000"
+
+networks:
+  backend:

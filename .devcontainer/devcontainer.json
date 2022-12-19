@@ -34,7 +34,9 @@
 			"extensions": [
 				"xdebug.php-debug",
 				"bmewburn.vscode-intelephense-client",
-				"mrmlnc.vscode-apache"
+				"mrmlnc.vscode-apache",
+				"ms-azuretools.vscode-bicep",
+				"msazurermtools.azurerm-vscode-tools"
 			]
 		}
 	},
