@@ -34,7 +34,6 @@
 			"extensions": [
 				"xdebug.php-debug",
 				"bmewburn.vscode-intelephense-client",
-				"mrmlnc.vscode-apache",
 				"ms-azuretools.vscode-azureappservice",
 				"ms-azuretools.vscode-bicep",
 				"ms-vscode.azure-account",
